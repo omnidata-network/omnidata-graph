@@ -1,0 +1,7 @@
+type OmniData @entity {
+  id: ID!
+  cid: String! 
+  contractAddress: String!
+  uniqueId: String
+  metadata: String
+}

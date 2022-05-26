@@ -1,0 +1,31 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+features:
+  - fullTextSearch
+  - ipfsOnEthereumContracts
+dataSources:
+  - kind: ethereum
+    name: OmniDataGateway
+    network: kovan
+    source:
+      address: "0x22024331C511F34d2dcAdf44A425edA803f59089"
+      abi: OmniDataGateway
+      startBlock: 31816555
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - OmniData
+      abis:
+        - name: OmniDataGateway
+          file: ./abis/OmniDataGateway.json
+      eventHandlers:
+        - event: OmniEvent(indexed address,string)
+          handler: handleOmniEvent
+        - event: OmniEvent(indexed address,indexed bytes32,string)
+          handler: handleOmniEvent1
+        - event: OmniEvent(indexed address,indexed uint256,string)
+          handler: handleOmniEvent2
+      file: ./src/mapping.ts
