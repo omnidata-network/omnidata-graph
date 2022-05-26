@@ -1,3 +1,21 @@
+type _Schema_
+  @fulltext(
+    name: "dataSearch"
+    language: en
+    algorithm: rank
+    include: [
+      {
+        entity: "OmniData",
+        fields: [
+          { name: "cid" },
+          { name: "contractAddress" },
+          { name: "metadata" },
+        ]
+      }
+    ]
+  )
+
+
 type OmniData @entity {
   id: ID!
   cid: String! 
